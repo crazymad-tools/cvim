@@ -84,7 +84,7 @@ Text text;
 Draw draw;					// 界面绘制器
 int epfd;					// epoll描述符
 struct termios old;			
-Socket server("127.0.0.1", 8002);
+//Socket server("127.0.0.1", 8002);
 
 char comm[1024];			// 命令行参数
 int mode = 0;					// 当前模式 0: normal, 1: commd, 2: insert
@@ -121,7 +121,7 @@ void init() {						// 初始化程序
 	set_echo(0);
 	init_signal();					// 初始化信号
 	init_read();					// 初始化输入设置
-	server.Connect();
+	//server.Connect();
 }
 
 void clear() {						// 程序结束前的收尾工作
@@ -140,7 +140,7 @@ char get_from_epoll() {
 	struct epoll_event events[1];
 	epoll_wait(epfd, events, 5, -1);
 	read(STDIN_FILENO, buf, 1);
-	server.Write(buf, 1);
+	//server.Write(buf, 1);
 	return buf[0];
 }
 void insert() {						// insert模式:2
